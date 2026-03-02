@@ -203,6 +203,15 @@
     .f-status.ok{display:block;background:#f0fdf4;border:1px solid #bbf7d0;color:#16a34a;}
     .f-status.ng{display:block;background:#fef2f2;border:1px solid #fecaca;color:#dc2626;}
 
+    /* RADIO */
+    .f-radio-group{display:flex;flex-direction:column;gap:10px;margin-top:4px;}
+    .f-radio{display:flex;align-items:center;gap:12px;padding:13px 16px;border:1px solid var(--border);border-radius:2px;cursor:pointer;transition:border-color .2s,background .2s;background:var(--off-white);}
+    .f-radio:hover{border-color:var(--green);background:var(--green-subtle);}
+    .f-radio input[type="radio"]{width:16px;height:16px;accent-color:var(--green);flex-shrink:0;cursor:pointer;}
+    .f-radio input[type="radio"]:checked + span{color:var(--green);font-weight:500;}
+    .f-radio:has(input:checked){border-color:var(--green);background:var(--green-subtle);}
+    .f-radio span{font-size:.92rem;color:var(--text-mid);}
+
     /* FOOTER */
     footer{background:var(--accent);border-top:1px solid rgba(255,255,255,.06);padding:44px 0 32px;color:rgba(255,255,255,.3);}
     .footer-inner{display:flex;align-items:center;justify-content:space-between;}
@@ -520,24 +529,30 @@
       <p class="sec-sub" style="margin:18px auto 0;text-align:center;">まずは相談だけでもOKです。<br>お気軽にお問い合わせください。</p>
     </div>
     <div class="contact-wrap rv d1">
-      <form class="contact-form" id="cForm" action="contact.php" method="POST">
+      <form class="contact-form" id="cForm">
         <div class="form-row">
           <div class="f-group">
             <label class="f-label">お名前<span class="f-req">必須</span></label>
-            <input class="f-input" type="text" name="name" placeholder="山田 太郎" required>
+            <input class="f-input" type="text" id="f-name" placeholder="山田 太郎" required>
           </div>
           <div class="f-group">
             <label class="f-label">メールアドレス<span class="f-req">必須</span></label>
-            <input class="f-input" type="email" name="email" placeholder="example@gmail.com" required>
+            <input class="f-input" type="email" id="f-email" placeholder="example@gmail.com" required>
           </div>
         </div>
         <div class="f-group">
-          <label class="f-label">件名</label>
-          <input class="f-input" type="text" name="subject" placeholder="講座について、など">
+          <label class="f-label">ご興味のあるサービス<span class="f-req">必須</span></label>
+          <div class="f-radio-group">
+            <label class="f-radio"><input type="radio" name="service" value="AI時短オンライン講座（¥9,800）" required><span>AI時短オンライン講座（¥9,800）</span></label>
+            <label class="f-radio"><input type="radio" name="service" value="個別AI活用サポート（¥10,000）"><span>個別AI活用サポート（¥10,000）</span></label>
+            <label class="f-radio"><input type="radio" name="service" value="人生ストーリー整理"><span>人生ストーリー整理</span></label>
+            <label class="f-radio"><input type="radio" name="service" value="オリジナル楽曲制作"><span>オリジナル楽曲制作</span></label>
+            <label class="f-radio"><input type="radio" name="service" value="まずは相談したい"><span>まずは相談したい</span></label>
+          </div>
         </div>
         <div class="f-group">
-          <label class="f-label">メッセージ内容<span class="f-req">必須</span></label>
-          <textarea class="f-textarea" name="message" rows="5" placeholder="ご相談内容をご記入ください" required></textarea>
+          <label class="f-label">メッセージ<span style="font-size:.75rem;color:var(--text-light);margin-left:8px;">任意</span></label>
+          <textarea class="f-textarea" id="f-message" rows="4" placeholder="ご質問・ご要望があればお書きください"></textarea>
         </div>
         <div class="f-status" id="fStatus"></div>
         <button type="submit" class="btn-submit" id="fBtn">この内容で送信する</button>
@@ -607,23 +622,40 @@
   document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 
   /* contact form */
+  /* Google Form submission */
+  const GFORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSctz8pkvMsUp7CptH18w1lRJmxwh2Aj14AWG3QM2O0tk-mA2g/formResponse';
+  // entry IDs - need to be confirmed from Google Form
+  const ENTRY_NAME    = 'entry.278892963';
+  const ENTRY_EMAIL   = 'entry.283211034';
+  const ENTRY_SERVICE = 'entry.2035937555';
+  const ENTRY_MESSAGE = 'entry.1226479356';
+
   const form=document.getElementById('cForm'),fStatus=document.getElementById('fStatus'),fBtn=document.getElementById('fBtn');
   if(form){
-    form.addEventListener('submit',async e=>{
+    form.addEventListener('submit', async e=>{
       e.preventDefault();
-      fBtn.disabled=true;fBtn.textContent='送信中...';
+      const name = document.getElementById('f-name').value;
+      const email = document.getElementById('f-email').value;
+      const service = form.querySelector('input[name="service"]:checked');
+      const message = document.getElementById('f-message').value;
+      if(!service){ fStatus.textContent='サービスを選択してください。'; fStatus.className='f-status ng'; return; }
+      fBtn.disabled=true; fBtn.textContent='送信中...';
       fStatus.className='f-status';
+      const body = new FormData();
+      body.append(ENTRY_NAME, name);
+      body.append(ENTRY_EMAIL, email);
+      body.append(ENTRY_SERVICE, service.value);
+      body.append(ENTRY_MESSAGE, message);
       try{
-        const res=await fetch('contact.php',{method:'POST',body:new FormData(form)});
-        const data=await res.json();
-        fStatus.textContent=data.message;
-        fStatus.className='f-status '+(data.status==='success'?'ok':'ng');
-        if(data.status==='success')form.reset();
+        await fetch(GFORM_URL, {method:'POST', body, mode:'no-cors'});
+        fStatus.textContent='送信が完了しました！ご連絡ありがとうございます。';
+        fStatus.className='f-status ok';
+        form.reset();
       }catch{
         fStatus.textContent='送信に失敗しました。時間をおいて再度お試しください。';
         fStatus.className='f-status ng';
       }finally{
-        fBtn.disabled=false;fBtn.textContent='この内容で送信する';
+        fBtn.disabled=false; fBtn.textContent='この内容で送信する';
       }
     });
   }
