@@ -322,7 +322,7 @@
         <div class="stat-label">オンライン完結・少人数制</div>
       </div>
       <div class="stat-block">
-        <div class="stat-num">¥<em>9,800</em></div>
+        <div class="stat-num">¥<em>98,000</em></div>
         <div class="stat-label">AI時短オンライン講座（税込）</div>
       </div>
       <div class="stat-block">
@@ -462,7 +462,7 @@
         <div class="plan-price">
           <span class="plan-duration">60分</span>
           <span class="plan-yen">¥</span>
-          <span class="plan-num">9,800</span>
+          <span class="plan-num">98,000</span>
           <span class="plan-unit">（税込）</span>
         </div>
         <ul class="plan-list">
@@ -479,7 +479,7 @@
         <div class="plan-price">
           <span class="plan-duration">60分</span>
           <span class="plan-yen">¥</span>
-          <span class="plan-num">10,000</span>
+          <span class="plan-num">158,000</span>
           <span class="plan-unit">（税込）</span>
         </div>
         <ul class="plan-list">
@@ -533,24 +533,109 @@
   <div class="container">
     <div class="sec-head rv">
       <span class="sec-label">MOVIE</span>
-      <h2 class="sec-title">まずは動画をご覧ください</h2>
+      <h2 class="sec-title">動画で学ぶ</h2>
       <p class="sec-sub" style="margin:18px auto 0;text-align:center;">AI初心者の方へ伝えたいことをまとめました。<br>動画を見てからお気軽にご相談ください。</p>
     </div>
-    <div class="rv d1" style="max-width:760px;margin:48px auto 0;">
-      <div style="position:relative;padding-bottom:56.25%;height:0;border-radius:4px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.1);">
-        <iframe src="https://www.youtube.com/embed/mpekbRG6odM" title="AI初心者にお伝えしたいこと" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+
+    <!-- メイン動画（自動で最新動画を表示） -->
+    <div class="rv d1" style="max-width:760px;margin:48px auto 0;text-align:center;">
+      <div id="yt-main" style="position:relative;width:100%;border-radius:4px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.1);background:#111;min-height:200px;display:flex;align-items:center;justify-content:center;">
+        <p style="color:rgba(255,255,255,.4);font-size:.9rem;">読み込み中...</p>
       </div>
-      <div style="text-align:center;margin-top:40px;display:flex;flex-direction:column;align-items:center;gap:16px;">
-        <a href="https://www.youtube.com/channel/UCB_bfJJPEY4ZOZPCMH0v8Tw" target="_blank" style="display:inline-flex;align-items:center;gap:12px;background:#FF0000;color:#fff;text-decoration:none;padding:14px 32px;border-radius:4px;font-size:.95rem;font-weight:600;box-shadow:0 4px 16px rgba(255,0,0,.3);transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-          YouTubeチャンネルを見る
-        </a>
-        <p style="font-size:.95rem;color:var(--text-mid);margin-top:8px;">動画を見てご相談したい方はこちら</p>
-        <a href="#contact" class="btn-s" style="display:inline-block;">お問い合わせフォームへ進む →</a>
-      </div>
+      <p style="margin-top:16px;font-size:.9rem;color:var(--text-light);">▲ クリックするとYouTubeで再生されます</p>
+    </div>
+
+    <!-- 新着動画一覧 -->
+    <div class="rv d2" style="margin-top:60px;">
+      <h3 style="text-align:center;font-family:var(--font-display);font-size:1.2rem;color:var(--accent);margin-bottom:32px;letter-spacing:.05em;">新着動画</h3>
+      <div id="yt-feed" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;"></div>
+      <p id="yt-error" style="display:none;text-align:center;color:var(--text-light);font-size:.9rem;"></p>
+    </div>
+
+    <div style="text-align:center;margin-top:40px;display:flex;flex-direction:column;align-items:center;gap:16px;">
+      <a href="https://www.youtube.com/channel/UCB_bfJJPEY4ZOZPCMH0v8Tw" target="_blank" style="display:inline-flex;align-items:center;gap:12px;background:#FF0000;color:#fff;text-decoration:none;padding:14px 32px;border-radius:4px;font-size:.95rem;font-weight:600;box-shadow:0 4px 16px rgba(255,0,0,.3);transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        チャンネルをもっと見る
+      </a>
+      <p style="font-size:.95rem;color:var(--text-mid);margin-top:8px;">動画を見てご相談したい方はこちら</p>
+      <a href="#contact" class="btn-s" style="display:inline-block;">お問い合わせフォームへ進む →</a>
     </div>
   </div>
 </section>
+
+<script>
+/* YouTube RSS feed via feedrapp proxy (CORS対応) */
+(function(){
+  const CHANNEL = 'UCB_bfJJPEY4ZOZPCMH0v8Tw';
+  const RSS_URL = encodeURIComponent('https://www.youtube.com/feeds/videos.xml?channel_id=' + CHANNEL);
+  const PROXY   = 'https://api.rss2json.com/v1/api.json?rss_url=' + RSS_URL + '&api_key=&count=6';
+  const grid    = document.getElementById('yt-feed');
+  const errEl   = document.getElementById('yt-error');
+
+  // フォールバック：手動で動画を表示
+  function showFallback() {
+    const videos = [
+      { id: 'mpekbRG6odM', title: 'AI初心者にお伝えしたいこと', date: '2026年' }
+    ];
+    videos.forEach(v => addCard(v.id, v.title, v.date, 'https://www.youtube.com/watch?v=' + v.id));
+    errEl.style.display = 'block';
+    errEl.textContent = '最新動画はチャンネルでご確認ください。';
+  }
+
+  function addCard(videoId, title, date, link) {
+    const thumb = 'https://img.youtube.com/vi/' + videoId + '/mqdefault.jpg';
+    const card  = document.createElement('a');
+    card.href   = link;
+    card.target = '_blank';
+    card.style.cssText = 'text-decoration:none;background:#fff;border-radius:4px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.06);border:1px solid var(--border);transition:transform .2s,box-shadow .2s;display:block;';
+    card.onmouseover = () => { card.style.transform='translateY(-4px)'; card.style.boxShadow='0 8px 32px rgba(0,0,0,.12)'; };
+    card.onmouseout  = () => { card.style.transform=''; card.style.boxShadow='0 4px 20px rgba(0,0,0,.06)'; };
+    card.innerHTML = `
+      <div style="position:relative;padding-bottom:56.25%;background:#000;">
+        <img src="${thumb}" alt="${title}" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;" onerror="this.src='https://img.youtube.com/vi/${videoId}/default.jpg'">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+          <div style="width:52px;height:52px;background:rgba(255,0,0,.9);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+      </div>
+      <div style="padding:16px;">
+        <p style="font-size:.85rem;color:var(--text-light);margin-bottom:6px;">${date}</p>
+        <p style="font-size:.95rem;color:var(--accent);font-weight:500;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${title}</p>
+      </div>`;
+    grid.appendChild(card);
+  }
+
+  fetch(PROXY)
+    .then(r => r.json())
+    .then(data => {
+      if(!data.items || data.items.length === 0){ showFallback(); return; }
+      data.items.forEach((item, index) => {
+        const videoId = item.link.includes('v=') ? item.link.split('v=')[1].split('&')[0] : item.guid.split(':').pop();
+        const date    = new Date(item.pubDate).toLocaleDateString('ja-JP',{year:'numeric',month:'long',day:'numeric'});
+        // 最新動画をメインに表示
+        if(index === 0) {
+          const main = document.getElementById('yt-main');
+          if(main) {
+            main.innerHTML = `
+              <a href="${item.link}" target="_blank" style="display:block;width:100%;position:relative;">
+                <img src="https://img.youtube.com/vi/${videoId}/maxresdefault.jpg" alt="${item.title}" style="width:100%;display:block;" onerror="this.src='https://img.youtube.com/vi/${videoId}/mqdefault.jpg'">
+                <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(0,0,0,.2);">
+                  <div style="width:72px;height:72px;background:rgba(255,0,0,.9);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,.3);">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+                  </div>
+                  <p style="color:#fff;margin-top:12px;font-size:1rem;font-weight:600;padding:0 16px;text-shadow:0 1px 4px rgba(0,0,0,.6);">${item.title}</p>
+                  <p style="color:rgba(255,255,255,.7);font-size:.82rem;margin-top:4px;">${date}</p>
+                </div>
+              </a>`;
+          }
+        }
+        addCard(videoId, item.title, date, item.link);
+      });
+    })
+    .catch(() => showFallback());
+})();
+</script>
 
 <!-- CONTACT -->
 <section class="section" id="contact">
@@ -581,6 +666,10 @@
       <a href="https://www.youtube.com/channel/UCB_bfJJPEY4ZOZPCMH0v8Tw" target="_blank" style="display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,.6);text-decoration:none;font-size:.85rem;transition:color .2s;" onmouseover="this.style.color='#FF0000'" onmouseout="this.style.color='rgba(255,255,255,.6)'">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
         YouTube
+      </a>
+      <a href="https://www.instagram.com/hrkz1981_mushindou/" target="_blank" style="display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,.6);text-decoration:none;font-size:.85rem;transition:color .2s;" onmouseover="this.style.color='#E1306C'" onmouseout="this.style.color='rgba(255,255,255,.6)'">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        Instagram
       </a>
       <p class="footer-copy">&copy; 2026 夢進堂 All Rights Reserved.</p>
     </div>
