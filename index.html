@@ -352,17 +352,27 @@ section{padding: 120px 0;position:relative}
 .about-art svg{width:72%;height:72%}
 .about-copy h2{font-size: clamp(28px, 3vw, 38px);color:var(--navy-900);line-height:1.5;letter-spacing:.04em}
 .about-copy .body{margin-top:28px;display:grid;gap:18px;color:#2A3040;font-size:15px;line-height:2}
+.about-diff{background:rgba(201,169,97,.08);border:1px solid rgba(201,169,97,.25);border-radius:var(--r-md);padding:18px 20px;font-size:14.5px}
+.about-diff strong{color:var(--navy-900);font-weight:600}
 
 /* ===================== Plans ===================== */
 .plans{background:var(--cream)}
-.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-@media (max-width:960px){ .plans-grid{grid-template-columns:1fr} }
+.plans-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+@media (max-width:1100px){ .plans-grid{grid-template-columns:1fr 1fr} }
+@media (max-width:680px){ .plans-grid{grid-template-columns:1fr} }
 .plan{
   background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);
   padding:44px 36px;position:relative;overflow:hidden;
   transition:.3s;
 }
 .plan:hover{transform:translateY(-4px);box-shadow:0 30px 60px -40px rgba(11,21,48,.25)}
+@media (min-width:1101px){
+  .plan{padding:36px 26px}
+  .plan h3{font-size:19px;line-height:1.5}
+  .plan-price{flex-wrap:wrap}
+  .plan-price .num{font-size:34px}
+  .plan-price .unit{font-size:11px;flex-basis:100%;margin-left:0;margin-top:6px;white-space:nowrap}
+}
 .plan.featured{
   background: linear-gradient(180deg, var(--navy-900), var(--navy-800));
   color:var(--cream);border-color:var(--navy-900);
@@ -396,6 +406,12 @@ section{padding: 120px 0;position:relative}
 .plan-cta:hover{background:var(--navy-900);color:var(--cream)}
 .plan.featured .plan-cta{background:var(--gold);border-color:var(--gold);color:var(--navy-900)}
 .plan.featured .plan-cta:hover{background:var(--gold-soft)}
+/* P5: 伴走 修了時の成果物 */
+.plan-deliver{margin:0 0 24px;padding:18px 18px 16px;border-radius:var(--r-md);background:rgba(201,169,97,.09);border:1px solid rgba(201,169,97,.28)}
+.pd-head{font-family:var(--font-serif);font-size:13.5px;color:var(--navy-900);font-weight:600;letter-spacing:.04em;margin-bottom:12px}
+.pd-list{list-style:none;padding:0;margin:0;display:grid;gap:9px}
+.pd-list li{display:flex;gap:10px;font-size:13px;line-height:1.6;color:var(--navy-800)}
+.pd-list li::before{content:"◆";color:var(--gold-2);font-size:9px;margin-top:5px;flex-shrink:0}
 
 /* ===================== Story Plans ===================== */
 .story{background:#fff;position:relative;overflow:hidden}
@@ -526,6 +542,14 @@ section{padding: 120px 0;position:relative}
 .cta .btn-primary{background:var(--gold);border-color:var(--gold);color:var(--navy-900);padding:18px 36px;font-size:14px}
 .cta .btn-primary:hover{background:var(--gold-soft)}
 .cta-sub{margin-top:16px;font-size:12px;color:var(--gold-soft);font-family:var(--font-mono);letter-spacing:.15em}
+.cta-axis{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:0 auto 32px}
+.cta-axis-item{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:9px 16px;border:1px solid rgba(201,169,97,.4);border-radius:999px;
+  background:rgba(255,255,255,.04);
+  font-size:13px;color:color-mix(in oklab, var(--cream) 90%, transparent);letter-spacing:.03em;
+}
+.cta-axis-item strong{color:var(--gold-soft);font-weight:600}
 
 /* ===================== Footer ===================== */
 .footer{background:var(--navy-900);color:color-mix(in oklab, var(--cream) 75%, transparent);padding:64px 0 36px;border-top:1px solid rgba(201,169,97,.15)}
@@ -603,6 +627,7 @@ body.font-sans h1, body.font-sans h2, body.font-sans h3, body.font-sans h4{font-
       </div>
     </a>
     <div class="nav-links">
+      <a href="#aiteam">AI秘書チーム</a>
       <a href="#service">AI時短講座</a>
       <a href="#about">夢進堂について</a>
       <a href="#ba">時短例</a>
@@ -712,6 +737,91 @@ body.font-sans h1, body.font-sans h2, body.font-sans h3, body.font-sans h4{font-
   </div>
 </header>
 
+<!-- ============= TRUST / PROOF BAR (P1) ============= -->
+<!-- ▼ 数字は本人申告ベース。各 proof-val 内の「TODO:実数」を実際の数値に置き換えてください。167本のみ確定値。 -->
+<section id="proof" class="proof" data-screen-label="01a Proof">
+  <div class="wrap">
+    <div class="proof-head">
+      <span class="kicker">— Track Record</span>
+      <p class="proof-lead">数字で見る、夢進堂のこれまで。</p>
+    </div>
+    <div class="proof-grid">
+      <div class="proof-item">
+        <div class="proof-val">183<span class="unit">回</span></div>
+        <div class="proof-lbl">オフ会・勉強会 主催（2025年〜）</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-val">167<span class="unit">本</span></div>
+        <div class="proof-lbl">ノウハウ図書館 記事</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.proof{background:var(--navy-900);padding:56px 0;color:var(--cream)}
+.proof-head{text-align:center;margin-bottom:36px}
+.proof-head .kicker{color:var(--gold-soft)}
+.proof-lead{font-family:var(--font-serif);font-size:clamp(20px,2.2vw,26px);color:#fff;letter-spacing:.06em;margin-top:10px}
+.proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+@media (max-width:760px){ .proof-grid{grid-template-columns:repeat(2,1fr);gap:28px} }
+.proof-item{text-align:center;padding:8px 4px;position:relative}
+.proof-item + .proof-item::before{content:"";position:absolute;left:0;top:14%;height:72%;width:1px;background:rgba(201,169,97,.3)}
+@media (max-width:760px){ .proof-item + .proof-item::before{display:none} }
+.proof-val{font-family:var(--font-serif);font-size:clamp(34px,4vw,46px);font-weight:600;color:#fff;letter-spacing:.02em;line-height:1}
+.proof-val .unit{font-size:15px;color:var(--gold-soft);margin-left:4px;font-family:var(--font-sans);font-weight:400}
+.proof-lbl{font-size:12px;color:color-mix(in oklab, var(--cream) 72%, transparent);margin-top:14px;letter-spacing:.08em}
+</style>
+
+<!-- ============= INTRO VIDEO (P3) ============= -->
+<!-- ▼ TODO:動画ID — From Editor 公開後の動画、または自己紹介動画の YouTube ID に差し替えてください（例: dQw4w9WgXcQ）。差し替えるまではこのセクションごと非表示にしておくのが安全です。 -->
+<section id="intro-video" class="introvid" data-screen-label="01a2 Video">
+  <div class="wrap">
+    <div class="iv-head">
+      <span class="kicker">— Watch</span>
+      <h2>1分でわかる、夢進堂。</h2>
+      <p class="lead">文章だけでは伝わらない雰囲気を、動画でどうぞ。</p>
+    </div>
+    <div class="iv-frame">
+      <!-- TODO:動画ID を埋め込み URL の末尾に設定（https://www.youtube.com/embed/動画ID） -->
+      <iframe
+        src="https://www.youtube.com/embed/Ipg8Wia1heg"
+        title="夢進堂 紹介動画"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+    <div class="iv-bridge">
+      <span>この動画も、AI 秘書チームと一緒に制作しました。</span>
+      <a href="#plans">この動画の作り方も、講座でお伝えしています →</a>
+    </div>
+  </div>
+</section>
+
+<style>
+.introvid{background:var(--cream);padding:90px 0}
+.iv-bridge{
+  max-width:880px;margin:18px auto 0;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;
+  font-size:12.5px;color:var(--muted);letter-spacing:.04em;
+  padding:14px 18px;background:rgba(201,169,97,.07);border:1px solid rgba(201,169,97,.25);border-radius:var(--r-md);
+}
+.iv-bridge a{color:var(--gold-2);font-family:var(--font-serif);font-size:13px}
+.iv-bridge a:hover{color:var(--navy-900)}
+.iv-head{text-align:center;max-width:680px;margin:0 auto 40px}
+.iv-head h2{font-family:var(--font-serif);font-size:clamp(26px,2.8vw,36px);color:var(--navy-900);margin:14px 0 14px;letter-spacing:.06em}
+.iv-head .lead{color:var(--muted);font-size:14px;line-height:1.9}
+.iv-frame{
+  position:relative;max-width:880px;margin:0 auto;aspect-ratio:16/9;
+  border-radius:var(--r-lg);overflow:hidden;background:var(--navy-900);
+  border:1px solid var(--line);box-shadow:0 30px 60px -30px rgba(11,21,48,.4);
+}
+.iv-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+/* P2: セクション系統カラー帯（上部4px） */
+.band-biz{border-top:4px solid #0E5E6F}
+.band-indiv{border-top:4px solid #E89B5A}
+</style>
+
 <!-- ============= ENTRY GATEWAY ============= -->
 <section id="gateway" class="gateway" data-screen-label="01b Gateway">
   <div class="wrap">
@@ -722,7 +832,7 @@ body.font-sans h1, body.font-sans h2, body.font-sans h3, body.font-sans h4{font-
     </div>
 
     <div class="gw-grid">
-      <a href="#biz" class="gw-card">
+      <a href="#biz" class="gw-card gw-biz">
         <div class="gw-num">A</div>
         <div class="gw-mark">FOR BUSINESS OWNERS</div>
         <h3>お店・事業を<br/>運営している方</h3>
@@ -735,14 +845,14 @@ body.font-sans h1, body.font-sans h2, body.font-sans h3, body.font-sans h4{font-
         <span class="gw-cta">事業者向けプランを見る →</span>
       </a>
 
-      <a href="#service" class="gw-card">
+      <a href="#service" class="gw-card gw-indiv">
         <div class="gw-num">B</div>
         <div class="gw-mark">FOR INDIVIDUALS</div>
         <h3>AI を学んで<br/>時間を取り戻したい方</h3>
         <p>会社員・個人事業主・主婦の方へ。<br/>AI を仕事と暮らしの味方にする講座と伴走サポート。</p>
         <ul class="gw-bullets">
-          <li>体験会 ¥5,500（最大6名）</li>
-          <li>本講座 ¥49,800（90分×2回）</li>
+          <li>体験会 ¥5,500（最大6名・60分）</li>
+          <li><strong>NEW</strong> AI秘書チーム構築 ¥29,800（90分×2回）</li>
           <li>個別伴走 ¥158,000（3ヶ月）</li>
         </ul>
         <span class="gw-cta">講座とプランを見る →</span>
@@ -784,11 +894,19 @@ body.font-sans h1, body.font-sans h2, body.font-sans h3, body.font-sans h4{font-
   letter-spacing:.06em;padding-top:6px;
 }
 .gw-card:hover .gw-cta{color:var(--gold-2)}
+/* P2: 系統カラー帯（事業者=深緑 / 個人=テラコッタ） */
+.gw-biz{border-top:4px solid #0E5E6F}
+.gw-biz .gw-num,.gw-biz .gw-mark{color:#0E5E6F}
+.gw-biz:hover{border-color:#0E5E6F}
+.gw-indiv{border-top:4px solid #E89B5A}
+.gw-indiv .gw-num,.gw-indiv .gw-mark{color:#C2702F}
+.gw-indiv:hover{border-color:#E89B5A}
 </style>
 
 <!-- ============= MARQUEE ============= -->
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
+    <span class="marquee-item">AI秘書チーム構築</span>
     <span class="marquee-item">ChatGPT 活用</span>
     <span class="marquee-item">業務時短</span>
     <span class="marquee-item">プロンプト設計</span>
@@ -796,6 +914,7 @@ body.font-sans h1, body.font-sans h2, body.font-sans h3, body.font-sans h4{font-
     <span class="marquee-item">ストーリー作成</span>
     <span class="marquee-item">オリジナル楽曲</span>
     <span class="marquee-item">1on1 サポート</span>
+    <span class="marquee-item">AI秘書チーム構築</span>
     <span class="marquee-item">ChatGPT 活用</span>
     <span class="marquee-item">業務時短</span>
     <span class="marquee-item">プロンプト設計</span>
@@ -807,7 +926,7 @@ body.font-sans h1, body.font-sans h2, body.font-sans h3, body.font-sans h4{font-
 </div>
 
 <!-- ============= BIZ / WEB SUPPORT ============= -->
-<section id="biz" class="biz" data-screen-label="06c Biz">
+<section id="biz" class="biz band-biz" data-screen-label="06c Biz">
   <div class="wrap">
     <div class="section-head">
       <div class="left">
@@ -816,6 +935,17 @@ body.font-sans h1, body.font-sans h2, body.font-sans h3, body.font-sans h4{font-
         <p class="lead">「ホームページ、いつか作らなきゃ」と思いながら、忙しくて手が回らない方へ。<br/>AIを使って、無理のない価格と更新負担で、ちゃんと"伝わる"HPをつくります。</p>
       </div>
       <div class="right">WEB SUPPORT</div>
+    </div>
+
+    <!-- 無料デモの約束 -->
+    <div class="biz-demo-promise">
+      <div class="bdp-badge">無料デモのお約束</div>
+      <div class="bdp-body">
+        <div class="bdp-title">無料デモを先に作ります。見てから決めてOK。</div>
+        <p class="bdp-text">お申込みの前に、あなたのお店のデモHPを実際に作ってお見せします。気に入らなければ、そのままお断りいただいて大丈夫です。費用は一切かかりません。</p>
+        <div class="bdp-meta"><span>✓ お問い合わせから <strong>24時間以内</strong> に返信</span><span>✓ デモは <strong>最短2日</strong> でお届け</span></div>
+      </div>
+      <a href="#contact" class="bdp-cta">無料デモを依頼する →</a>
     </div>
 
     <!-- Empathy / Why -->
@@ -917,12 +1047,55 @@ body.font-sans h1, body.font-sans h2, body.font-sans h3, body.font-sans h4{font-
       <div class="br-item"><strong>契約期間の縛りなし</strong>（ご解約はいつでも）</div>
     </div>
 
-    <p class="biz-note">※ ドメイン費用・サーバー費用は月額に含まれます。<br/>※ お見積り・初回ご相談は無料。Googleマップに登録のある事業者さま向けプランです。</p>
+    <!-- 補助金の可能性（非断定） -->
+    <div class="biz-subsidy">
+      <div class="bs-head">補助金で、実質負担を抑えられる場合があります</div>
+      <p class="bs-text">尾張旭市のデジタル化支援（対象経費の3/4補助）や、国の小規模事業者持続化補助金・IT導入補助金など、HP制作が対象になる制度があります。対象になるか・いくら補助されるかは制度や時期によって異なりますので、最新の公募要領をご確認ください。申請を検討される際の情報整理もお手伝いします。</p>
+    </div>
+
+    <p class="biz-note">※ ドメイン費用・サーバー費用は月額に含まれます。<br/>※ お見積り・初回ご相談は無料。Googleマップに登録のある事業者さま向けプランです。<br/>※ 補助金の採択を保証するものではありません。</p>
   </div>
 </section>
 
 <style>
 .biz{background:var(--cream-2)}
+/* 無料デモの約束（最重要の約束として強調） */
+.biz-demo-promise{
+  display:flex;align-items:center;gap:28px;
+  background:linear-gradient(135deg,#0E5E6F,#0a4654);color:#fff;
+  border-radius:var(--r-lg);padding:32px 36px;margin-bottom:48px;
+  border:1.5px solid var(--gold);box-shadow:0 24px 48px -28px rgba(14,94,111,.5);
+  position:relative;overflow:hidden;
+}
+.biz-demo-promise::after{content:"";position:absolute;top:-30px;right:-30px;width:180px;height:180px;background:radial-gradient(circle,rgba(201,169,97,.2),transparent 70%);pointer-events:none}
+.bdp-badge{
+  flex-shrink:0;writing-mode:vertical-rl;font-family:var(--font-serif);font-size:13px;
+  letter-spacing:.3em;color:var(--gold-soft);border-right:1px solid rgba(201,169,97,.4);padding-right:20px;
+}
+.bdp-body{flex:1;min-width:0}
+.bdp-title{font-family:var(--font-serif);font-size:clamp(18px,2vw,24px);font-weight:600;letter-spacing:.05em;line-height:1.6;margin-bottom:10px}
+.bdp-text{font-size:13.5px;line-height:1.95;color:rgba(255,255,255,.85)}
+.bdp-meta{display:flex;gap:22px;flex-wrap:wrap;margin-top:14px;font-size:12.5px;color:var(--gold-soft);letter-spacing:.04em}
+.bdp-meta strong{color:#fff}
+.bdp-cta{
+  flex-shrink:0;background:var(--gold);color:var(--navy-900);font-weight:600;
+  padding:15px 26px;border-radius:999px;font-size:13.5px;letter-spacing:.06em;transition:.2s;white-space:nowrap;
+}
+.bdp-cta:hover{background:var(--gold-soft)}
+@media (max-width:860px){
+  .biz-demo-promise{flex-direction:column;align-items:flex-start;gap:18px;padding:26px 22px}
+  .bdp-badge{writing-mode:horizontal-tb;border-right:0;border-bottom:1px solid rgba(201,169,97,.4);padding:0 0 10px;letter-spacing:.2em}
+  .bdp-cta{width:100%;text-align:center}
+}
+/* 補助金の可能性 */
+.biz-subsidy{
+  margin-top:36px;background:#fff;border:1px dashed var(--gold);border-radius:var(--r-lg);
+  padding:26px 30px;max-width:860px;margin-left:auto;margin-right:auto;
+}
+.bs-head{font-family:var(--font-serif);font-size:16px;color:var(--navy-900);font-weight:600;letter-spacing:.05em;margin-bottom:10px}
+.bs-head::before{content:"◆";color:var(--gold-2);font-size:11px;margin-right:10px}
+.bs-text{font-size:13px;color:#2A3040;line-height:2}
+@media (max-width:640px){ .biz-subsidy{padding:20px 18px} }
 .biz-why{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:56px}
 @media (max-width:900px){ .biz-why{grid-template-columns:1fr} }
 .bw-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:32px 28px;position:relative}
@@ -964,8 +1137,136 @@ body.font-sans h1, body.font-sans h2, body.font-sans h3, body.font-sans h4{font-
 </style>
 
 
+<!-- ============= AI SECRETARY TEAM (NEW FLAGSHIP) ============= -->
+<section id="aiteam" class="aiteam band-indiv" data-screen-label="01c AI Team">
+  <div class="wrap">
+    <div class="at-head">
+      <span class="at-new">NEW — 新メニュー</span>
+      <span class="kicker">— AI Secretary Team</span>
+      <h2>AI秘書チーム構築 個別伴走</h2>
+      <p class="at-lead">
+        AI を「ツール」から「同僚」へ。<br/>
+        散らばった AI のチャット・セッションを 1 つの体制に統合し、<br class="pc-only"/>
+        秘書に名前と役割を与えて、複数の仕事を並列で進められる形を一緒につくります。
+      </p>
+    </div>
+
+    <div class="at-grid">
+      <div class="at-main">
+        <div class="at-price-card">
+          <div class="at-tag">★ 90分 × 2回 の個別伴走</div>
+          <div class="at-price">
+            <span class="yen">¥</span><span class="num">29,800</span><span class="unit">税込</span>
+          </div>
+          <ul class="at-feats">
+            <li>90分 × 2回の個別セッション（オンライン）</li>
+            <li>散らばった AI セッションをあなた専用の体制に統合</li>
+            <li>秘書に名前・役割を付与し、振り分けの型をつくる</li>
+            <li>並列処理で複数の仕事を同時に進める運用を設計</li>
+            <li>引き継ぎ書テンプレート付き</li>
+            <li>30日間のチャットサポート付き</li>
+          </ul>
+          <div class="at-ctas">
+            <a href="#plans" class="btn btn-ghost at-btn">まず体験会で雰囲気を見る（¥5,500）</a>
+            <a href="#contact" class="btn btn-primary at-btn">直接申し込む <span class="arrow"></span></a>
+          </div>
+        </div>
+      </div>
+
+      <aside class="at-side">
+        <div class="at-proof">
+          <div class="at-proof-head">この伴走の裏付け</div>
+          <ul class="at-proof-list">
+            <li><strong>183回</strong>のオフ会・勉強会を主催（2025年〜）</li>
+            <li><strong>167本</strong>のノウハウ記事を執筆・公開</li>
+            <li>主催者自身が、毎日 AI 秘書チームで実際に業務を回しています</li>
+          </ul>
+          <p class="at-proof-note">— このホームページも、AI 秘書チームと一緒に制作しました。</p>
+        </div>
+
+        <!-- 価格の階段 -->
+        <div class="at-ladder">
+          <div class="at-ladder-head">学びの階段（3ステップ）</div>
+          <div class="at-step">
+            <span class="at-step-no">1</span>
+            <div><div class="at-step-name">AI時短 体験会</div><div class="at-step-price">¥5,500 / 60分</div></div>
+          </div>
+          <div class="at-step current">
+            <span class="at-step-no">2</span>
+            <div><div class="at-step-name">AI秘書チーム構築 個別伴走</div><div class="at-step-price">¥29,800 / 90分×2回</div></div>
+            <span class="at-step-badge">いまここ</span>
+          </div>
+          <div class="at-step">
+            <span class="at-step-no">3</span>
+            <div><div class="at-step-name">個別AI伴走サポート</div><div class="at-step-price">¥158,000 / 3ヶ月</div></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<style>
+.aiteam{background:linear-gradient(180deg,#FFFDF7,var(--cream));padding:96px 0;border-bottom:1px solid var(--line)}
+.at-head{text-align:center;max-width:760px;margin:0 auto 52px}
+.at-new{display:inline-flex;font-family:var(--font-mono);font-size:10px;letter-spacing:.28em;color:var(--navy-900);background:var(--gold);padding:6px 14px;border-radius:999px;margin-bottom:16px;font-weight:600}
+.at-head h2{font-family:var(--font-serif);font-size:clamp(28px,3vw,40px);color:var(--navy-900);margin:14px 0 18px;letter-spacing:.06em;line-height:1.5}
+.at-lead{color:#2A3040;font-size:14.5px;line-height:2.1}
+@media (max-width:640px){
+  .pc-only{display:none}
+  .at-new{display:inline-flex;margin-bottom:10px}
+  .at-head .kicker{display:block;margin-top:4px}
+}
+.at-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:stretch}
+@media (max-width:960px){ .at-grid{grid-template-columns:1fr} }
+.at-price-card{
+  background:linear-gradient(180deg,var(--navy-900),var(--navy-800));color:var(--cream);
+  border-radius:var(--r-lg);padding:44px 40px;height:100%;
+  display:flex;flex-direction:column;gap:0;position:relative;overflow:hidden;
+  border:1.5px solid var(--gold);box-shadow:0 30px 60px -30px rgba(11,21,48,.45);
+}
+.at-price-card::after{content:"";position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(201,169,97,.18),transparent 70%);pointer-events:none}
+.at-tag{display:inline-flex;align-self:flex-start;font-family:var(--font-mono);font-size:10px;letter-spacing:.25em;padding:6px 12px;border-radius:999px;background:rgba(201,169,97,.18);color:var(--gold-soft);margin-bottom:20px}
+.at-price{display:flex;align-items:baseline;gap:8px;padding:14px 0 20px;border-bottom:1px solid rgba(201,169,97,.25)}
+.at-price .yen{font-family:var(--font-serif);font-size:20px;color:var(--gold)}
+.at-price .num{font-family:var(--font-serif);font-size:52px;font-weight:600;color:#fff;letter-spacing:.02em}
+.at-price .unit{font-size:12px;color:color-mix(in oklab,var(--cream) 60%,transparent);margin-left:6px}
+.at-feats{list-style:none;padding:0;margin:24px 0 30px;display:grid;gap:12px;flex:1}
+.at-feats li{display:flex;gap:12px;font-size:13.5px;line-height:1.7;color:color-mix(in oklab,var(--cream) 88%,transparent)}
+.at-feats li::before{content:"";width:16px;height:1px;background:var(--gold);margin-top:12px;flex-shrink:0}
+.at-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.at-btn{flex:1;min-width:220px;justify-content:center;text-align:center}
+.aiteam .btn-ghost{border-color:rgba(201,169,97,.5);color:var(--gold-soft)}
+.aiteam .btn-ghost:hover{background:rgba(201,169,97,.12)}
+.at-side{display:flex;flex-direction:column;gap:20px}
+.at-proof{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:28px 26px}
+.at-proof-head{font-family:var(--font-serif);font-size:15px;color:var(--navy-900);font-weight:600;letter-spacing:.06em;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.at-proof-list{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.at-proof-list li{display:flex;gap:10px;font-size:13px;line-height:1.8;color:var(--navy-800)}
+.at-proof-list li::before{content:"◆";color:var(--gold-2);font-size:9px;margin-top:6px;flex-shrink:0}
+.at-proof-list strong{color:var(--navy-900);font-family:var(--font-serif)}
+.at-proof-note{margin-top:14px;font-size:12px;color:var(--gold-2);font-family:var(--font-serif);letter-spacing:.04em;line-height:1.8}
+.at-ladder{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:28px 26px;flex:1}
+.at-ladder-head{font-family:var(--font-mono);font-size:10px;letter-spacing:.22em;color:var(--gold-2);margin-bottom:18px}
+.at-step{display:flex;align-items:center;gap:14px;padding:13px 14px;border-radius:var(--r-md);position:relative}
+.at-step + .at-step{margin-top:8px}
+.at-step-no{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-family:var(--font-lat-serif);font-style:italic;font-size:14px;color:var(--muted);flex-shrink:0}
+.at-step-name{font-size:13px;color:var(--navy-900);letter-spacing:.03em;line-height:1.5}
+.at-step-price{font-family:var(--font-mono);font-size:11px;color:var(--muted);margin-top:3px;letter-spacing:.06em}
+.at-step.current{background:rgba(201,169,97,.12);border:1px solid var(--gold)}
+.at-step.current .at-step-no{background:var(--gold);border-color:var(--gold);color:var(--navy-900);font-weight:600}
+.at-step.current .at-step-name{font-weight:600;font-family:var(--font-serif)}
+.at-step-badge{margin-left:auto;font-family:var(--font-mono);font-size:9px;letter-spacing:.18em;background:var(--navy-900);color:var(--gold-soft);padding:4px 10px;border-radius:999px;flex-shrink:0}
+@media (max-width:640px){
+  .at-price-card{padding:32px 24px}
+  .at-price .num{font-size:42px}
+  .at-btn{min-width:100%}
+  .at-step-badge{display:none}
+}
+</style>
+
 <!-- ============= SERVICE / 3 STEPS ============= -->
-<section id="service" class="svc" data-screen-label="02 Service">
+<section id="service" class="svc band-indiv" data-screen-label="02 Service">
   <div class="wrap">
     <div class="section-head">
       <div class="left">
@@ -1235,6 +1536,7 @@ body.font-sans h1, body.font-sans h2, body.font-sans h3, body.font-sans h4{font-
       <div class="body">
         <p>日々の業務に追われ、「本当にやりたい仕事」に時間を使えていますか？ 夢進堂では、ChatGPT などの AI ツールを活用し、日常業務の時間を短縮する方法を実践ベースでお伝えします。</p>
         <p>難しい専門知識は不要。「使える人」になることをゴールにしています。AI で時間に余裕が生まれると、人は自分の人生と向き合えるようになります。</p>
+        <p class="about-diff"><strong>現役の教員が、毎日の実務で実際に使っている方法だけ</strong>をお伝えします。流行りのテクニックではなく、忙しい現場で「本当に時間が戻った」やり方だけ。だから、機械が苦手な方でも、明日から無理なく続けられます。</p>
         <p style="font-family:var(--font-serif);font-size:16px;color:var(--navy-900);padding-left:18px;border-left:2px solid var(--gold);letter-spacing:.04em">「自分の人生を大切にしたい」——<br/>そんな方の伴走者でありたい。</p>
       </div>
     </div>
@@ -1248,7 +1550,7 @@ body.font-sans h1, body.font-sans h2, body.font-sans h3, body.font-sans h4{font-
       <div class="left">
         <span class="kicker">— Plans</span>
         <h2>サービス内容・料金</h2>
-        <p class="lead">まずは相談だけでも大丈夫です。自分に合うプランか、一緒に確かめていきましょう。</p>
+        <p class="lead">体験会（¥5,500）→ AI秘書チーム構築（¥29,800）→ 個別伴走（¥158,000）と、無理のない階段をご用意しています。まずは相談だけでも大丈夫です。</p>
       </div>
       <div class="right">ALL PRICES 税込</div>
     </div>
@@ -1272,7 +1574,24 @@ body.font-sans h1, body.font-sans h2, body.font-sans h3, body.font-sans h4{font-
       </div>
 
       <div class="plan featured">
-        <div class="plan-tag">★ MAIN</div>
+        <div class="plan-tag">★ NEW — おすすめ</div>
+        <h3>AI秘書チーム構築<br/>個別伴走</h3>
+        <p class="plan-desc">散らばったAIを1つの「秘書チーム」に。ツールから同僚へ。</p>
+        <div class="plan-price">
+          <span class="yen">¥</span><span class="num">29,800</span><span class="unit">税込 / 90分×2回</span>
+        </div>
+        <ul class="plan-feats">
+          <li>90分 × 2回の個別セッション</li>
+          <li>AIセッションをあなた専用の体制に統合</li>
+          <li>秘書に名前・役割を付与、並列処理の運用設計</li>
+          <li>引き継ぎ書テンプレート付き</li>
+          <li>30日間チャットサポート付き</li>
+        </ul>
+        <a href="#contact" class="plan-cta">AI秘書チーム構築を申し込む →</a>
+      </div>
+
+      <div class="plan">
+        <div class="plan-tag">◆ COURSE</div>
         <h3>AI時短 本講座</h3>
         <p class="plan-desc">実務ですぐ使えるプロンプト型を、2回でしっかり。</p>
         <div class="plan-price">
@@ -1283,7 +1602,7 @@ body.font-sans h1, body.font-sans h2, body.font-sans h3, body.font-sans h4{font-
           <li>実際の業務を想定した実践型</li>
           <li>明日から使えるプロンプト集</li>
           <li>録画アーカイブ付き（復習OK）</li>
-          <li>講座資料 PDF プレゼント</li>
+          <li>ストアカでも夜間枠（火・木・土 19–21時）開催</li>
         </ul>
         <a href="#contact" class="plan-cta">本講座について問い合わせる →</a>
       </div>
@@ -1302,11 +1621,30 @@ body.font-sans h1, body.font-sans h2, body.font-sans h3, body.font-sans h4{font-
           <li>人生ストーリー整理のサポート</li>
           <li>オリジナル楽曲制作もご相談可</li>
         </ul>
+        <div class="plan-deliver">
+          <div class="pd-head">修了時に、あなたが手にするもの</div>
+          <ul class="pd-list">
+            <li>自分専用の「AI秘書チーム」</li>
+            <li>あなたの業務に合わせたカスタムコマンド一式</li>
+            <li>AIで回す、あなた専用の業務フロー</li>
+          </ul>
+        </div>
         <a href="#contact" class="plan-cta">個別伴走を問い合わせる →</a>
       </div>
     </div>
+
+    <!-- P6: お支払い方法 -->
+    <p class="pay-note">お支払い：銀行振込（カード決済は準備中です）</p>
   </div>
 </section>
+
+<style>
+.pay-note{
+  margin:36px auto 0;text-align:center;max-width:640px;
+  font-size:13px;color:var(--muted);font-family:var(--font-mono);letter-spacing:.06em;
+  padding-top:20px;border-top:1px dashed var(--line);
+}
+</style>
 
 <!-- ============= STORY PLANS ============= -->
 <section id="story" class="story section" data-screen-label="06b Story">
@@ -1517,7 +1855,7 @@ body.font-sans h1, body.font-sans h2, body.font-sans h3, body.font-sans h4{font-
             <div class="movie-side-sub">AI・時短・人生の話</div>
           </div>
         </div>
-        <p class="movie-side-copy">難しい話は抜きで、「実際にどう使うか」を中心にお届けしています。通勤や家事のすきま時間でどうぞ。</p>
+        <p class="movie-side-copy">難しい話は抜きで、「実際にどう使うか」を中心にお届けしています。通勤や家事のすきま時間でどうぞ。<br/><strong style="color:var(--navy-900)">動画の作り方そのものも、講座でお伝えしています。</strong></p>
         <ul class="movie-topics">
           <li>AI ってそもそも何？</li>
           <li>はじめての ChatGPT</li>
@@ -1572,6 +1910,42 @@ body.font-sans h1, body.font-sans h2, body.font-sans h3, body.font-sans h4{font-
 .movie-sub-cta:hover{color:var(--navy-900)}
 </style>
 
+<!-- ============= TEACHER TOOLS (PREVIEW) ============= -->
+<section id="teacher-tools" class="ttools" data-screen-label="08b Teacher Tools">
+  <div class="wrap">
+    <div class="tt-box">
+      <div class="tt-left">
+        <span class="tt-badge">COMING SOON — 2026年6月末リリース予定</span>
+        <h3>教員向けツール「所見メーカー」ほか、準備中。</h3>
+        <p>現役教員の経験から生まれた、学校の先生のための AI ツールを開発しています。先行案内をご希望の方は、ウェイトリストにご登録ください。</p>
+      </div>
+      <a href="https://forms.gle/pJ6yPBVnDhW5xVp98" target="_blank" rel="noopener" class="tt-cta">先行案内に登録する →</a>
+    </div>
+  </div>
+</section>
+
+<style>
+.ttools{background:var(--cream-2);padding:0 0 70px}
+.tt-box{
+  display:flex;align-items:center;gap:28px;
+  background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);
+  border-radius:var(--r-lg);padding:28px 32px;
+}
+.tt-badge{display:inline-flex;font-family:var(--font-mono);font-size:10px;letter-spacing:.2em;color:var(--gold-2);background:rgba(201,169,97,.1);padding:5px 12px;border-radius:999px;margin-bottom:12px}
+.tt-left{flex:1;min-width:0}
+.tt-left h3{font-family:var(--font-serif);font-size:18px;color:var(--navy-900);letter-spacing:.04em;line-height:1.6;margin-bottom:8px;font-weight:600}
+.tt-left p{font-size:13px;color:var(--muted);line-height:1.9}
+.tt-cta{
+  flex-shrink:0;border:1px solid var(--navy-900);color:var(--navy-900);
+  padding:13px 22px;border-radius:999px;font-size:12.5px;letter-spacing:.06em;transition:.2s;white-space:nowrap;
+}
+.tt-cta:hover{background:var(--navy-900);color:var(--cream)}
+@media (max-width:760px){
+  .tt-box{flex-direction:column;align-items:flex-start;gap:16px;padding:24px 20px}
+  .tt-cta{width:100%;text-align:center}
+}
+</style>
+
 <!-- ============= APPLY FLOW ============= -->
 <section id="flow" class="flow" data-screen-label="09 Flow">
   <div class="wrap">
@@ -1600,7 +1974,7 @@ body.font-sans h1, body.font-sans h2, body.font-sans h3, body.font-sans h4{font-
           <svg viewBox="0 0 36 36" fill="none" stroke="#C9A961" stroke-width="1.2"><circle cx="18" cy="18" r="12"/><path d="M18 10v8l6 3"/></svg>
         </div>
         <h3>日時のご案内</h3>
-        <p>直近の体験会候補日をお送りします。ご都合に合う日を選ぶだけ。ご決済後に確定です。</p>
+        <p>直近の体験会候補日をお送りします。ご都合に合う日を選ぶだけ。ご決済後に確定です。<br/><strong>最短 2 日</strong>で体験会にご参加いただけます。</p>
         <div class="fs-link" style="opacity:.5;cursor:default">MAIL / LINE</div>
       </div>
       <div class="flow-step">
@@ -1676,6 +2050,13 @@ body.font-sans h1, body.font-sans h2, body.font-sans h3, body.font-sans h4{font-
       </details>
       <details class="faq-item">
         <summary class="faq-q">
+          <span class="faq-q-text"><span class="qmark">Q.</span>「AI秘書チーム構築」って、何をするのですか？</span>
+          <span class="faq-toggle"></span>
+        </summary>
+        <div class="faq-a">90分×2回の個別セッションで、あちこちに散らばった AI のチャットやセッションを、あなた専用の 1 つの体制に統合します。秘書に名前と役割を与え、複数の仕事を並列で進められる運用の型を一緒につくります。引き継ぎ書テンプレートと 30 日間のチャットサポートが付くので、終わったあとも自分で育てていけます。主催者自身が毎日この形で業務を回しており、このホームページも AI 秘書チームと一緒に制作しています。</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">
           <span class="faq-q-text"><span class="qmark">Q.</span>講座後のフォローはありますか？</span>
           <span class="faq-toggle"></span>
         </summary>
@@ -1699,8 +2080,12 @@ body.font-sans h1, body.font-sans h2, body.font-sans h3, body.font-sans h4{font-
       <span class="kicker" style="color:var(--gold)">— Contact</span>
       <h2 style="margin-top:14px">まずは、相談だけでも。</h2>
       <p>AI のこと、時間のこと、これからの人生のこと。<br/>どんな入口でも大丈夫です。「うまく説明できないかも」もまとめて、一緒に整理していきます。</p>
+      <div class="cta-axis">
+        <span class="cta-axis-item">✓ お問い合わせから <strong>24時間以内</strong> に返信</span>
+        <span class="cta-axis-item">✓ 最短 <strong>2日</strong> で体験会にご参加可能</span>
+      </div>
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSctz8pkvMsUp7CptH18w1lRJmxwh2Aj14AWG3QM2O0tk-mA2g/viewform" target="_blank" rel="noopener" class="btn btn-primary">お問い合わせフォームへ進む <span class="arrow"></span></a>
-      <div class="cta-sub">※ 新しいタブで Google フォームが開きます</div>
+      <div class="cta-sub">※ 新しいタブで Google フォームが開きます ・ お支払いは銀行振込（カード決済は準備中）</div>
     </div>
   </div>
 </section>
@@ -1722,6 +2107,7 @@ body.font-sans h1, body.font-sans h2, body.font-sans h3, body.font-sans h4{font-
       <div>
         <h5>MENU</h5>
         <ul>
+          <li><a href="#aiteam">AI秘書チーム構築</a></li>
           <li><a href="#service">AI時短講座</a></li>
           <li><a href="#about">夢進堂について</a></li>
           <li><a href="#ba">時短例</a></li>
