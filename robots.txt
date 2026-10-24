@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+Disallow: /_archive/
+
+# AI検索・AIアシスタントのクローラーも歓迎します
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-SearchBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://mushindou.com/sitemap.xml
