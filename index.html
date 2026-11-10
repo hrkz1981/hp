@@ -513,6 +513,12 @@
       .hero-chibi { width: 140px; border-radius: 20px; border-width: 4px; }
       .hero h1 { margin-top: 14px; margin-bottom: 12px; }
     }
+
+    .voices { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+    .voice { margin: 0; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 22px 18px; position: relative; }
+    .voice blockquote { margin: 0; font-size: 15px; line-height: 1.8; }
+    .voice blockquote::before { content: "“"; display: block; font-family: var(--font-serif); font-size: 40px; line-height: .6; color: var(--terracotta); margin-bottom: 6px; }
+    .voice figcaption { margin-top: 10px; font-size: 13px; color: var(--muted); font-weight: 600; text-align: right; }
 </style>
 </head>
 <body>
@@ -587,6 +593,24 @@
           <div class="stat"><b>のべ1,100人以上</b><span>オフ会の参加者</span></div>
           <div class="stat"><b>20年</b><span>教員としての経験</span></div>
           <div class="stat"><b>167記事</b><span>ノウハウ図書館（2026-07-25時点）</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VOICES -->
+    <section id="voices" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">VOICES</span>
+          <h2>参加した方の声</h2>
+          <p>オフ会・講座に来てくださった方の感想です（ご本人の投稿から一部を抜き出しています）。</p>
+        </div>
+        <div class="voices">
+          <figure class="voice"><blockquote>ドライバー3名の運転手業務日報アプリを作成。（中略）1ヶ月前には想像もしていなかった事ができるようになる</blockquote><figcaption>会社員（営業）の方</figcaption></figure>
+          <figure class="voice"><blockquote>不安とモヤモヤでいっぱいでしたが（中略）今後の仕事の進め方やAIの活用の仕方が少しわかり、来週仕事に行くことが楽しみになりました！</blockquote><figcaption>会社員の方</figcaption></figure>
+          <figure class="voice"><blockquote>1人で導入出来る自信が無かった（中略）キャッツさんの丁寧なサポート、説明で滞りなく導入出来ました。</blockquote><figcaption>道場を経営している方</figcaption></figure>
+          <figure class="voice"><blockquote>1人だと途中で操作が不安になってしまうところを、それで大丈夫👌と直接教えて頂けるのは本当ありがたくて</blockquote><figcaption>子育て中の方</figcaption></figure>
+          <figure class="voice"><blockquote>メルカリのハードルが100から1に下がった気分✨でした（中略）「えっ、これだけでいいの！」というくらい簡単でびっくり😊</blockquote><figcaption>物販をしている方</figcaption></figure>
         </div>
       </div>
     </section>
