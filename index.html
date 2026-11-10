@@ -243,7 +243,7 @@
      "name": "申し込みや相談はどうすればいいですか？",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "メール（hrkz1981@mushindou.com）でご連絡ください。講座はストアカから予約できます。"
+      "text": "メール（hrkz1981@mushindou.com）でご連絡ください。最初の15分の相談は無料です。講座はストアカから予約できます。"
      }
     }
    ]
@@ -490,6 +490,29 @@
   footer{padding:36px 0;text-align:center;font-size:12.5px;color:var(--muted)}
   footer a{color:var(--muted);text-decoration:underline}
   footer .foot-links{margin-top:8px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+    .hero-who { display: inline-block; background: var(--green-tint); color: var(--green-dark); font-weight: 700; font-size: 14px; padding: 6px 16px; border-radius: 999px; }
+    .hero h1 em { font-style: normal; color: var(--terracotta-dark); }
+    .hero-proof { font-weight: 600; font-size: 15px; margin-bottom: 22px; }
+    .hero-proof b { color: var(--terracotta-dark); }
+    .hero-pick { font-size: 14px; color: var(--muted); margin-bottom: 10px; }
+    .hero-choices { display: grid; gap: 10px; max-width: 460px; margin-bottom: 18px; text-align: left; }
+    .hero-choice { display: flex; align-items: center; gap: 12px; background: var(--paper); border: 1.5px solid var(--line); border-radius: 16px; padding: 12px 16px; text-decoration: none; color: var(--ink); transition: border-color .2s; }
+    .hero-choice:hover { border-color: var(--terracotta); }
+    .hero-choice .ic { font-size: 22px; }
+    .hero-choice b { display: block; font-size: 15.5px; }
+    .hero-choice small { display: block; color: var(--muted); font-size: 12.5px; line-height: 1.5; }
+    .hero-choice .go { margin-left: auto; color: var(--green); font-weight: 700; }
+    .hero-main-cta { width: 100%; max-width: 460px; font-size: 17px; padding: 16px; }
+    .hero-note { font-size: 12.5px; color: var(--muted); margin-top: 10px; }
+    .hero-chibi img { width: 100%; height: auto; }
+    .hero-chibi { width: min(80%, 280px); border-radius: 28px; overflow: hidden; border: 6px solid var(--paper); box-shadow: 0 24px 48px -20px rgba(10,40,45,.35); }
+    @media (max-width: 900px) {
+      .hero-choices, .hero-main-cta { margin-left: auto; margin-right: auto; }
+      .hero-portrait-wrap { order: -1; }
+      .hero-chibi { width: 140px; border-radius: 20px; border-width: 4px; }
+      .hero h1 { margin-top: 14px; margin-bottom: 12px; }
+    }
 </style>
 </head>
 <body>
@@ -514,23 +537,21 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div>
-          <span class="eyebrow hero-eyebrow">MUSHINDOU / AI SUPPORT</span>
-          <h1>AIで時間をつくり、<br>人生を前に進める。</h1>
-          <p class="hero-sub">夢進堂（むしんどう）は、教室で20年教えてきたキャッツが運営するAI活用の教室です。名古屋・長久手のAIオフ会は300回以上。講座、HP制作、HPの安全チェックまで、専門用語なしで寄り添います。</p>
-          <div class="hero-cta">
-            <a class="btn btn-primary" href="https://www.street-academy.com/steachers/907530" target="_blank" rel="noopener">講座を見る</a>
-            <a class="btn btn-outline" href="#contact">相談する</a>
+          <span class="hero-who">AIが苦手な方へ</span>
+          <h1>仕事でAIを使えるまで、<br><em>となりで</em>教えます。</h1>
+          <p class="hero-proof">教員20年 × AIエージェント実践<br>オフ会<b>300回以上</b>・のべ<b>1,100人以上</b>。<br>初めての方が多く来てくれます。</p>
+          <p class="hero-pick">どれに近いですか？</p>
+          <div class="hero-choices">
+            <a class="hero-choice" href="#services"><span class="ic">💻</span><span><b>AIを習いたい</b><small>オンライン講座 3,000円〜／マンツーマン</small></span><span class="go">›</span></a>
+            <a class="hero-choice" href="#hp"><span class="ic">🏠</span><span><b>HPを作りたい・守りたい</b><small>制作 88,000円（モニター44,800円）・保守 月5,500円〜</small></span><span class="go">›</span></a>
+            <a class="hero-choice" href="#services"><span class="ic">🏫</span><span><b>学校・会社で研修したい</b><small>90分〜・内容はご相談で</small></span><span class="go">›</span></a>
           </div>
+          <a class="btn btn-primary hero-main-cta" href="#contact">15分 無料で相談する</a>
+          <p class="hero-note">メールで質問するだけでOK。しつこい営業はしません。</p>
         </div>
         <div class="hero-portrait-wrap">
-          <div style="width:100%;max-width:340px">
-            <div style="position:relative">
-              <div class="hero-portrait-ring"></div>
-              <div class="hero-portrait">
-                <img src="assets/cats-portrait-premium.jpg" alt="夢進堂代表キャッツのキャラクターイラスト。朝の光が差す教室で、黒縁メガネと赤いポロシャツ姿でノートPCを開き微笑んでいる" />
-              </div>
-            </div>
-            <div class="hero-badge">🧑‍🏫 現役教員 × AI活用</div>
+          <div class="hero-chibi">
+            <img src="assets/cats-chibi-hero.jpg" alt="ノートPCの前で手をふる夢進堂代表キャッツのちびキャライラスト" width="424" height="656" />
           </div>
         </div>
       </div>
@@ -607,7 +628,7 @@
           <p>名古屋・長久手・藤が丘でAIオフ会を主催しています。これまで300回以上、のべ1,100人以上が参加しました。テーマは Claude Code・ChatGPT・AIでのメルカリ出品など。参加費は無料（飲食代のみ各自）です。</p>
         </div>
 
-        <h3 class="sub-head">ホームページを作る・守る</h3>
+        <h3 class="sub-head" id="hp">ホームページを作る・守る</h3>
         <div class="grid-3">
           <div class="card svc-card">
             <h3>HP制作パッケージ</h3>
@@ -723,7 +744,7 @@
           <details><summary>HPセキュリティチェックでは何を見ますか？</summary><p>お客さま自身のサイトを、外からの見え方と管理画面を一緒に確認します。SSL、更新の状態、バックアップ、ログインの守り、フォームの迷惑メール対策、ドメインの期限などです。攻撃テストは行わず、パスワードもお預かりしません。</p></details>
           <details><summary>WordPress引っ越し診断とは何ですか？</summary><p>WordPressをやめて、サーバー代のかからない仕組みに移せるかを60分で判定する診断です。診断は3,300円（税込）。移せる場合は、一緒に作業する引っ越しサポート（90分×2回・19,800円）もあります。</p></details>
           <details><summary>AIオフ会はどこで開いていますか？</summary><p>名古屋・長久手・藤が丘で開いています。参加費は無料（飲食代のみ各自）です。</p></details>
-          <details><summary>申し込みや相談はどうすればいいですか？</summary><p>メール（hrkz1981@mushindou.com）でご連絡ください。講座はストアカから予約できます。</p></details>
+          <details><summary>申し込みや相談はどうすればいいですか？</summary><p>メール（hrkz1981@mushindou.com）でご連絡ください。最初の15分の相談は無料です。講座はストアカから予約できます。</p></details>
         </div>
       </div>
     </section>
@@ -752,7 +773,7 @@
           <h2 style="margin-top:14px">お問い合わせ</h2>
           <p>講座・研修・個別サポート・HP制作・HPセキュリティチェックのご相談はこちらから。まずはお気軽にどうぞ。</p>
           <div class="contact-cta">
-            <a class="btn btn-primary" href="mailto:hrkz1981@mushindou.com?subject=夢進堂へのお問い合わせ">メールで問い合わせる</a>
+            <a class="btn btn-primary" href="mailto:hrkz1981@mushindou.com?subject=夢進堂へのお問い合わせ">15分 無料で相談する（メール）</a>
             <a class="btn btn-outline" href="https://www.street-academy.com/steachers/907530" target="_blank" rel="noopener">ストアカで講座を予約する</a>
           </div>
           <p class="contact-email">hrkz1981@mushindou.com</p>
