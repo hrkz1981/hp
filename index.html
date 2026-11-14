@@ -513,6 +513,27 @@
       .hero-chibi { width: 140px; border-radius: 20px; border-width: 4px; }
       .hero h1 { margin-top: 14px; margin-bottom: 12px; }
     }
+
+    .flow { list-style: none; margin: 28px auto 0; padding: 0; max-width: 520px; display: grid; gap: 10px; text-align: left; }
+    .flow li { display: flex; gap: 14px; align-items: center; background: rgba(255,255,255,.1); border-radius: 14px; padding: 12px 16px; }
+    .flow b { flex: 0 0 34px; height: 34px; border-radius: 50%; background: var(--terracotta); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); }
+    .flow span { font-weight: 700; font-size: 15px; line-height: 1.5; }
+    .flow small { display: block; font-weight: 400; font-size: 12.5px; color: rgba(255,255,255,.8); }
+    .apply { margin: 24px auto 0; max-width: 520px; background: var(--paper); color: var(--ink); border-radius: 20px; padding: 24px 20px; text-align: left; display: grid; gap: 6px; }
+    .apply label { font-size: 13.5px; font-weight: 700; color: var(--green-dark); margin-top: 10px; }
+    .apply select, .apply input, .apply textarea { width: 100%; font: inherit; font-size: 16px; padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 12px; background: #fff; color: var(--ink); }
+    .apply select:focus, .apply input:focus, .apply textarea:focus { outline: 2px solid var(--terracotta); border-color: transparent; }
+    .apply .btn { margin-top: 16px; width: 100%; font-size: 16.5px; cursor: pointer; font-family: inherit; }
+    .contact-box .apply-note { color: var(--muted); font-size: 12.5px; margin-top: 8px; max-width: none; }
+    .sticky-cta { display: none; }
+    @media (max-width: 820px) {
+      .contact-box { padding: 40px 18px; }
+      .sticky-cta { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: color-mix(in oklab, var(--cream-light) 92%, transparent); backdrop-filter: blur(10px); border-top: 1px solid var(--line); transform: translateY(110%); transition: transform .25s; }
+      .sticky-cta.show { transform: none; }
+      .sticky-cta .btn { width: 100%; padding: 12px; }
+      footer { padding-bottom: 90px; }
+    }
+    .svc-card-img { max-width: none; }
 </style>
 </head>
 <body>
@@ -612,14 +633,14 @@
             <h3>学校・PTA研修</h3>
             <div class="svc-price">90<small>分 〜</small></div>
             <p>学校現場・PTA向けの研修会。教育現場を知っているからこそ話せる、実務に直結する内容です。</p>
-            <a class="btn btn-outline btn-sm" href="#contact">相談する</a>
+            <a class="btn btn-outline btn-sm" href="#contact" data-svc="学校・会社の研修">研修を相談する</a>
           </div>
           <div class="card svc-card">
             <img class="svc-card-img" src="assets/svc-support.jpg" alt="水彩×フラットタッチで描いたノートPCとマグカップのある個別サポートの机のイラスト" loading="lazy" />
             <h3>個別サポート</h3>
             <div class="svc-price">マンツーマン</div>
             <p>時間制相談・カスタマイズ相談など、一人ひとりの悩みに合わせて個別にサポートします。</p>
-            <a class="btn btn-outline btn-sm" href="#contact">相談する</a>
+            <a class="btn btn-outline btn-sm" href="#contact" data-svc="AIを習いたい（個別サポート）">個別サポートを相談する</a>
           </div>
         </div>
 
@@ -635,21 +656,21 @@
             <div class="svc-price">¥88,000<small> 税込</small></div>
             <p class="svc-note">モニター価格44,800円（先着3名）／保守 月5,500円〜</p>
             <p>ホームページ＋カード決済・銀行振込の申込ページ＋特定商取引法の表記をセットで作ります。予約機能は追加オプション。公開後の保守（更新・バックアップ・見守り）は月5,500円、文章や写真の差し替え込みは月11,000円です。</p>
-            <a class="btn btn-outline btn-sm" href="#contact">相談する</a>
+            <a class="btn btn-outline btn-sm" href="#contact" data-svc="HP制作">HP制作を相談する</a>
           </div>
           <div class="card svc-card">
             <h3>HPセキュリティチェック</h3>
             <div class="svc-price">¥5,500<small> オンライン60分・税込</small></div>
             <p class="svc-note">対面90分（名古屋近郊）は8,800円</p>
             <p>SSL、更新、バックアップ、ログインの守り、フォームの迷惑メール対策、ドメインの期限を一緒に確認。Claude・Codex・Geminiの3つのAIでダブルチェックします。攻撃テストはせず、パスワードもお預かりしません。</p>
-            <a class="btn btn-outline btn-sm" href="#contact">相談する</a>
+            <a class="btn btn-outline btn-sm" href="#contact" data-svc="HPセキュリティチェック">チェックを申し込む</a>
           </div>
           <div class="card svc-card">
             <h3>WordPress引っ越し診断</h3>
             <div class="svc-price">¥3,300<small> 診断60分・税込</small></div>
             <p class="svc-note">引っ越しサポート（一緒に作業 90分×2回）19,800円</p>
             <p>「WordPressをやめたい」「サーバー代を減らしたい」方へ。サーバー代のかからない仕組みに移せるかを判定します。移せる場合は、画面を一緒に見ながら引っ越しまで進めます。</p>
-            <a class="btn btn-outline btn-sm" href="#contact">相談する</a>
+            <a class="btn btn-outline btn-sm" href="#contact" data-svc="WordPress引っ越し診断">診断を申し込む</a>
           </div>
         </div>
       </div>
@@ -770,13 +791,37 @@
       <div class="wrap">
         <div class="contact-box">
           <span class="eyebrow" style="color:#fff"><span style="color:#fff">CONTACT</span></span>
-          <h2 style="margin-top:14px">お問い合わせ</h2>
-          <p>講座・研修・個別サポート・HP制作・HPセキュリティチェックのご相談はこちらから。まずはお気軽にどうぞ。</p>
-          <div class="contact-cta">
-            <a class="btn btn-primary" href="mailto:hrkz1981@mushindou.com?subject=夢進堂へのお問い合わせ">15分 無料で相談する（メール）</a>
-            <a class="btn btn-outline" href="https://www.street-academy.com/steachers/907530" target="_blank" rel="noopener">ストアカで講座を予約する</a>
-          </div>
-          <p class="contact-email">hrkz1981@mushindou.com</p>
+          <h2 style="margin-top:14px">相談・お申込み（1分）</h2>
+          <p>まずは15分の無料相談から。話を聞いてから決めていただいて大丈夫です。</p>
+          <ol class="flow">
+            <li><b>1</b><span>下のフォームで送る<small>1分で終わります</small></span></li>
+            <li><b>2</b><span>キャッツからメールでお返事<small>2日以内にお返事します</small></span></li>
+            <li><b>3</b><span>15分の無料相談（オンライン）<small>内容と料金を確かめて、納得してからお申込み</small></span></li>
+          </ol>
+          <form class="apply" id="apply-form">
+            <label for="ap-svc">ご相談の内容</label>
+            <select id="ap-svc">
+              <option>AIを習いたい（個別サポート）</option>
+              <option>HP制作</option>
+              <option>HPセキュリティチェック</option>
+              <option>WordPress引っ越し診断</option>
+              <option>学校・会社の研修</option>
+              <option>まだ決まっていない・その他</option>
+            </select>
+            <label for="ap-name">お名前（ニックネームでもOK）</label>
+            <input id="ap-name" type="text" autocomplete="name" placeholder="例：山田">
+            <label for="ap-way">相談の方法</label>
+            <select id="ap-way">
+              <option>オンライン（Zoomなど）</option>
+              <option>対面（名古屋・長久手・日進の近く）</option>
+              <option>まずはメールで聞きたい</option>
+            </select>
+            <label for="ap-msg">ひとこと（空のままでもOK）</label>
+            <textarea id="ap-msg" rows="3" placeholder="例：お店のHPを作りたい。平日の夜が都合がいいです。"></textarea>
+            <button class="btn btn-primary" type="submit">この内容でメールを作る</button>
+            <p class="apply-note">ボタンを押すとメールの画面が開きます。そのまま「送信」を押してください。しつこい営業はしません。</p>
+          </form>
+          <p class="contact-email">メールが開かないときは <a href="mailto:hrkz1981@mushindou.com?subject=夢進堂へのお問い合わせ">hrkz1981@mushindou.com</a> へ。講座は<a href="https://www.street-academy.com/steachers/907530" target="_blank" rel="noopener">ストアカ</a>から予約できます。</p>
         </div>
       </div>
     </section>
@@ -791,6 +836,24 @@
     </div>
   </footer>
 
+<div class="sticky-cta" id="sticky-cta"><a class="btn btn-primary" href="#contact">15分 無料で相談する</a></div>
+<script>
+(function(){
+  var svc=document.getElementById('ap-svc');
+  document.querySelectorAll('a[data-svc]').forEach(function(a){a.addEventListener('click',function(){
+    for(var i=0;i<svc.options.length;i++){if(svc.options[i].text===a.dataset.svc){svc.selectedIndex=i;}}
+  });});
+  document.getElementById('apply-form').addEventListener('submit',function(e){
+    e.preventDefault();
+    var v=function(id){return document.getElementById(id).value.trim();};
+    var body='ご相談の内容：'+v('ap-svc')+'\nお名前：'+v('ap-name')+'\n相談の方法：'+v('ap-way')+'\nひとこと：'+v('ap-msg')+'\n';
+    location.href='mailto:hrkz1981@mushindou.com?subject='+encodeURIComponent('【夢進堂】相談：'+v('ap-svc'))+'&body='+encodeURIComponent(body);
+  });
+  var bar=document.getElementById('sticky-cta'),c=document.getElementById('contact');
+  function t(){var r=c.getBoundingClientRect();bar.classList.toggle('show',window.scrollY>500&&r.top>window.innerHeight);}
+  window.addEventListener('scroll',t,{passive:true});t();
+})();
+</script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "293aaecb5f3a41cc838dc8a1ec4a9ecb"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
