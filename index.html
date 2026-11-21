@@ -539,6 +539,10 @@
       footer { padding-bottom: 90px; }
     }
     .svc-card-img { max-width: none; }
+    .pay-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 6px; }
+    .svc-card .pay-row .btn { margin-top: 0; }
+    .pay-ask { font-size: 13.5px; font-weight: 600; color: var(--green-dark); }
+    .svc-card .pay-note { flex: 0 0 auto; font-size: 12px; color: var(--muted); line-height: 1.6; }
 </style>
 </head>
 <body>
@@ -686,7 +690,11 @@
             <div class="svc-price">¥5,500<small> オンライン60分・税込</small></div>
             <p class="svc-note">対面90分（名古屋近郊）は8,800円</p>
             <p>SSL、更新、バックアップ、ログインの守り、フォームの迷惑メール対策、ドメインの期限を一緒に確認。Claude・Codex・Geminiの3つのAIでダブルチェックします。攻撃テストはせず、パスワードもお預かりしません。</p>
-            <a class="btn btn-outline btn-sm" href="#contact" data-svc="HPセキュリティチェック">チェックを申し込む</a>
+            <div class="pay-row">
+              <a class="btn btn-primary btn-sm" href="https://buy.stripe.com/REPLACE_ME_security_online" target="_blank" rel="noopener">カードで申し込む（5,500円）</a>
+              <a class="pay-ask" href="#contact" data-svc="HPセキュリティチェック">先に相談する</a>
+            </div>
+            <p class="pay-note">🔒 お支払いはStripe（カード）。お支払いのあと、2日以内に日程のご連絡をします。</p>
           </div>
           <div class="card svc-card">
             <h3>WordPress引っ越し診断</h3>
